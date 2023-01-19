@@ -1,0 +1,35 @@
+<nav mat-tab-nav-bar mat-align-tabs="end">
+  <a
+    mat-tab-link
+    routerLink="/home"
+    (click)="activeLink = 'home'"
+    [routerLinkActive]
+    #home="routerLinkActive"
+    [routerLinkActiveOptions]="{ exact: true }"
+    [active]="home.isActive"
+  >
+    Home
+  </a>
+  <a
+    mat-tab-link
+    routerLink="/application"
+    (click)="activeLink = 'application'"
+    [routerLinkActive]
+    #application="routerLinkActive"
+    [routerLinkActiveOptions]="{ exact: true }"
+    [active]="application.isActive"
+  >
+    Application
+  </a>
+  <a
+    mat-tab-link
+    routerLink="/videos"
+    (click)="activeLink = 'videos'"
+    [routerLinkActive]
+    #videos="routerLinkActive"
+    [routerLinkActiveOptions]="{ exact: true }"
+    [active]="videos.isActive"
+  >
+    Videos
+  </a>
+</nav>

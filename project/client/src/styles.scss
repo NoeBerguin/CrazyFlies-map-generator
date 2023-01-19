@@ -1,0 +1,33 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body {
+     margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; 
+     background-color: rgb(61, 61, 61);
+}
+
+:root {
+  // theme 1
+  --color1: #222831;
+  --color2: #393e46;
+  --color3: #00adb5;
+  --color4: #00fff5;
+  --color2-trans: #393e46f2;
+
+  // theme 2
+  --color5: #2a2438;
+  --color6: #352f44;
+  --color7: #5c5470;
+  --color8: #dbd8e3;
+
+  // theme 3
+  --color9: #000000;
+  --color10: #3e065f;
+  --color11: #700b97;
+  --color12: #8e05c2;
+
+  // other colors
+  --salmon: lightsalmon;
+  --green: lightgreen;
+  --red: lightpink;
+}

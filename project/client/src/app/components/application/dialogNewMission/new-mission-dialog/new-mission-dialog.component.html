@@ -1,0 +1,25 @@
+<h1 mat-dialog-title>New mission</h1>
+<div mat-dialog-content>
+  <p>Mission name:</p>
+  <mat-form-field appearance="fill">
+    <mat-label>Alpha Tango</mat-label>
+    <input matInput [(ngModel)]="data.name">
+  </mat-form-field>
+</div>
+
+<p>Mission type:</p>
+<mat-form-field appearance="fill">
+    <mat-label>Select an option</mat-label>
+    <mat-select [(value)]="data.type">
+      <mat-option value="Simulation">Simulation</mat-option>
+      <mat-option value="Physics">Real Drone</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+<div mat-dialog-actions>
+  <button mat-raised-button color="accent" (click)="onNoClick()">Cancel</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="data" cdkFocusInitial>
+    <mat-icon>add</mat-icon>
+      Create
+    </button>
+</div>

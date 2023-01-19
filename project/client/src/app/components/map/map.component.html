@@ -1,0 +1,17 @@
+<div id="map">
+    <canvas #canvas
+            id="map2d" *ngIf="this.dimension"
+            (mouseenter)="onMouseEnterCanvas($event, canvas)"
+            (mouseleave)="onMouseLeave($event, canvas)"
+            (mousemove)="onMouseMove($event, canvas)"
+            (mousedown)="onMouseDown($event, canvas)"
+            (mouseup)="onMouseUp($event, canvas)"
+            (click)="addPoints()"
+            width="1000" height="500">
+    </canvas>
+
+    <button id="zoom-in" class="canvas-button" (click)="zoomIn()">+</button>
+    <button id="zoom-out" class="canvas-button" (click)="zoomOut()">-</button>
+
+    <app-engine id="map3d" *ngIf="!this.dimension"></app-engine>
+</div>

@@ -1,0 +1,104 @@
+body {
+  background-color: var(--color1);
+
+  // when mat-tab-group overflows, provides scroll bar
+  overflow-y: scroll;
+}
+
+.grid-container {
+    // background-color: #333;
+    height: 100%;
+    width: 100%;
+
+    // position: relative;
+
+    // grid spacing between modules
+    display: grid;
+    grid-template-columns: [line0] 5% [line1] 90% [line2] auto [line3];
+    grid-template-rows: [line0] 10% [line1] 15% [line2] 15% [line3] auto [line4];
+}
+
+// mat-tab-group, selects labels + body
+#videos {
+     grid-column-start: line1;
+     grid-column-end: line2;
+     grid-row-start: line1;
+     grid-row-end: line4;
+
+     // mat-tab-group takes whole grid section
+     height: 100%;
+     width: 100%;
+}
+
+.videos-spacing {
+  // align videos in center
+  text-align: center;
+
+  // used prevent scroll tabs when focused on videos
+  min-height: 500px;
+
+  // testing
+  // background-color: var(--color6);
+}
+
+#videos iframe {
+  // align videos in center
+  display: inline-block;
+
+  // video window size
+  height: 170px;
+  width: 300px;
+
+  // spacing between videos
+  margin: 1%;
+
+  transition: transform 500ms;
+}
+
+iframe:focus, iframe:hover  {
+  transform: scale(1.1);
+  z-index: 1;
+}
+
+// ========== Customizing mat-tabs ==========
+// selects video's labels
+:host ::ng-deep .mat-tab-labels {
+  // background-color: var(--color2);
+  border: 0;
+}
+
+// each tab label
+:host ::ng-deep .mat-tab-label {
+    // background-color: transparent;
+    color: var(--color4);
+    pointer-events: auto;
+}
+
+// color for scrolling arrows
+:host ::ng-deep .mat-tab-header-pagination, :host::ng-deep .mat-tab-header-pagination-chevron {
+  border-color: var(--color4);
+  // background-color: red;
+}
+
+// active tab label
+:host ::ng-deep .mat-tab-label.mat-tab-label-active {
+    // background-color: transparent;
+    color: var(--color4);
+}
+
+:host ::ng-deep .mat-tab-label:hover {
+  background-color: var(--color1);
+}
+
+// Styles for the ink bar
+:host ::ng-deep .mat-tab-group.mat-primary .mat-ink-bar,:host ::ng-deep .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+    color: var(--color4);
+    background-color: var(--color4);
+}
+
+// fix colors not switching
+:host ::ng-deep.mat-tab-label.mat-tab-label-active:not(.mat-tab-disabled),
+:host ::ng-deep.mat-tab-label.mat-tab-label-active.cdk-keyboard-focused:not(.mat-tab-disabled) {
+  color: var(--color4);
+  opacity: 1;
+}

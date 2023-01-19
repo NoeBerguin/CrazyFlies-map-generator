@@ -1,0 +1,16 @@
+#ignoring .vscode folder but we keep some files for debuging
+**/.vscode/
+**/.vs/
+**/.clangd
+**/compile_commands.json
+
+package-lock.json
+**/.DS_Store
+
+# Code Coverage Folder
+coverage/
+
+debug.log
+**/.projectile
+*/.log
+node_modules

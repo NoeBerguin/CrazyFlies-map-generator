@@ -1,0 +1,58 @@
+<body>
+  <button class="drawer-toggle" (click)="drawer.toggle()"></button>
+  <mat-drawer-container hasBackdrop="false">
+    <mat-drawer #drawer mode="over" opened="true">
+      <mat-tab-group
+        mat-stretch-tabs
+        id="videos"
+        mat-align-tabs="center"
+        dynamicHeight
+        headerPosition="above"
+        animationDuration="0ms"
+        #tabGroup
+      >
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <mat-icon>build_circle</mat-icon>
+            Mission Options
+          </ng-template>
+          <div class="drawer-compartment">
+            <button
+              mat-raised-button
+              class="drawer-button"
+              (click)="openDialogHistory()"
+            >
+              <mat-icon>history</mat-icon>
+              History
+            </button>
+            <button mat-raised-button class="drawer-button" routerLink="/logs">
+              <mat-icon>settings</mat-icon>
+              System logs
+            </button>
+            <button
+              mat-raised-button
+              class="drawer-button"
+              (click)="openDialogNewMission()"
+            >
+              <mat-icon>save_alt</mat-icon>
+              Save mission
+            </button>
+          </div>
+        </mat-tab>
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <mat-icon>directions_walk</mat-icon>
+            Missions Mode
+          </ng-template>
+          <!-- This component contains all the drone related information -->
+          <drone-info></drone-info>
+        </mat-tab>
+      </mat-tab-group>
+    </mat-drawer>
+
+    <mat-drawer-content>
+      <app-map id="map-container"></app-map>
+    </mat-drawer-content>
+
+  </mat-drawer-container>
+</body>

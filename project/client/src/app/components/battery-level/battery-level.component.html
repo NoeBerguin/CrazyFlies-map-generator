@@ -1,0 +1,12 @@
+<div class="box">
+	<div class="percent">
+		<svg>
+			<circle></circle>
+			<circle [ngStyle]="{'stroke-dashoffset': animationBar}"></circle>
+		</svg>
+		<div class="number">
+			<h2>{{batteryPercentage}}<span>%</span></h2>
+		</div>
+	</div>
+	<label class="text">Battery</label>
+</div>

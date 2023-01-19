@@ -1,0 +1,40 @@
+version: "3.3"
+services:
+  simulation:
+    build: ./project/simulation
+    container_name: simulation
+    environment:
+      DISPLAY: $DISPLAY
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - ~/.Xauthority:/root/.Xauthority
+    network_mode: "host"
+    privileged: true
+
+  db:
+    image: postgres
+    container_name: database
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: noe
+    ports:
+      - 5432:5432
+
+  web:
+    build: ./project/server
+    depends_on:
+      - db
+    ports:
+      - 4800:4800
+      - 5800:5800
+    devices:
+      - "/dev/bus:/dev/bus"
+
+  interface:
+    container_name: interface
+    build: ./project/client
+    ports:
+      - "4200:4200"
+    depends_on:
+      - db

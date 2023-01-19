@@ -1,0 +1,286 @@
+// -------------------- Page elements --------------------
+// This is a container for all pages in the home section
+
+body {
+  scroll-behavior: smooth;
+}
+
+.pages {
+  scroll-behavior: smooth;
+
+  position: relative;
+
+  // fullpage scroll properties
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  height: 100%;
+}
+
+// Pages in general
+.page {
+  position: relative; // needed for absolute children
+
+  height: 100%;
+  color: white;
+
+  scroll-snap-align: start;
+
+  // Animation
+  animation-name: FadeIn;
+  animation-duration: 3s;
+
+  background-color: var(--color1);
+}
+
+// Specific page element
+// -------------------- PAGE ONE --------------------
+#one {
+  display: grid;
+  grid-template-columns: [line0] 25% [line1] 50% [line2] 25% [line3];
+  grid-template-rows: [line0] 5% [line1] 20% [line2] 65% [line3] 10% [line4] auto [line5];
+  padding: 1%; // padding around all the content
+}
+
+@media only screen and (max-width: 1500px) {
+#one {
+  margin-top: 45px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+
+#intro-text {
+margin-top: 125px;
+}
+#polylogo, .team-container {
+display: none;
+}
+#intro-title {
+top: 4rem !important;
+}
+}
+
+@media only screen and (max-width: 600px) {
+#intro-title {
+font-size: 2rem !important;
+top: 4rem !important;
+}
+}
+
+#intro-title {
+  font-size: 3.4rem;
+  font-weight: bolder;
+  position: absolute; // parent div needs to be relative, or else this overflows
+  top: 6rem;
+  width: 100%;
+  text-align: center;
+  opacity: 1;
+  color: #eee;
+}
+
+#intro-text {
+  // text
+  color: #aaa;
+
+  text-align: justify;
+  padding: 10px;
+
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+
+  // grid positioning
+  grid-column-start: line1;
+  grid-column-end: line2;
+  grid-row-start: line2;
+  grid-row-end: line3;
+
+  overflow-y: auto;
+}
+
+#intro-text h1 {
+  font-weight: bolder;
+}
+#intro-text h3 {
+  font-weight: bolder;
+}
+
+#useful-links h3 {
+  font-weight: bolder;
+  color: white;
+}
+
+#intro-text p {
+  font-size: 1rem;
+  // font-weight: bold;
+}
+
+.text-links:link, .text-links:visited, .text-links:hover{
+  color: var(--color3);
+}
+
+/* selected link */
+.text-links:active {
+  color: var(--color4);
+}
+
+#useful-links {
+  // content
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  // justify-content: space-around;
+  gap: 30px;
+
+  // grid positioning
+  grid-column-start: line2;
+  grid-column-end: line3;
+  grid-row-start: line2;
+  grid-row-end: line3;
+
+  color: var(--color4);
+}
+
+#polylogo {
+  width: 80%; // 80% of grid section width
+  padding: 10px;
+
+  // grid positioning
+  grid-column-start: line1;
+  grid-column-end: line0;
+  grid-row-start: line1;
+  grid-row-end: line2;
+
+
+  background-color: #eee;
+  border-radius: 5px;
+}
+
+.team-container {
+  // Size and positioning of Team Section
+  grid-column-start: line0;
+  grid-column-end: line1;
+  grid-row-start: line2;
+  grid-row-end: line3;
+
+  // centering all content
+  text-align: center;
+}
+
+#team-title {
+  color: #eee;
+  font-weight: bold;
+}
+
+.team-cards {
+  // Vertical Stacking for cards
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  // gap: 0;
+
+  text-align: left;
+
+  // Scroll bar for cards
+  overflow-y: auto; //scroll option for what overflows
+  height: 90%; //#team-title takes approx 10% of div height
+  min-height: fit-content;
+  min-width: fit-content;
+}
+
+.person {
+  width: 350px;
+
+  min-height: fit-content;
+  margin: 5px;
+
+  background: var(--color2-trans);
+  color: #eee;
+}
+
+.person mat-card-subtitle {
+  color: var(--color3);
+}
+
+.person ul  {
+  width: 100%;
+}
+
+.person mat-card-content {
+  width: 55%;
+  text-align: justify;
+}
+
+// -------------------- ANIMATIONS --------------------
+
+// https://codepen.io/kianoshp/pen/PPeWzb
+
+@keyframes FadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+// ------------ Neon animation ---------------
+
+.neon {
+  position: relative;
+  display: block;
+  width: 70%;
+  //padding: 15px;
+  padding: 10px 30px;
+  margin: 5px;
+  color: var(--color4);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 20px;
+  transition: 0.5s;
+  overflow: hidden;
+}
+.neon:hover {
+  background: var(--color4);
+  color: #000;
+  box-shadow: 0 0 50px var(--color4);
+  transition-delay: 0.5s;
+}
+
+.neon:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid var(--color4);
+  border-left: 2px solid var(--color4);
+  transition: 0.5s;
+}
+
+.neon:hover:before {
+  width: 100%;
+  height: 100%;
+}
+
+.neon:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 10px;
+  height: 10px;
+  border-bottom: 2px solid var(--color4);
+  border-right: 2px solid var(--color4);
+  transition: 0.5s;
+}
+
+.neon:hover:after {
+  width: 100%;
+  height: 100%;
+}

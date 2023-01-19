@@ -1,0 +1,6 @@
+cflib==0.1.16
+Flask==2.0.1
+Flask-Cors==3.0.10
+psycopg2-binary==2.9.1
+Controller == 0.1.0
+pyPS4Controller == 1.2.5

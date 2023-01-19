@@ -1,0 +1,75 @@
+<body>
+    <div class="pages">
+        <div id="one" class="page">
+            <h1 id="intro-title"> Third Year Final Project</h1>
+            <section id="intro-text">
+                <h1>What is our third year final project?</h1>
+                <p>
+                    Our goal this semester was to explore an unknown area using crazyflie drones and then draw a map of the terrain they've explored so
+                    that users can see it on their screen. We also included the option to simulate the exploration using the ARGOS software. The simulation is
+                    used in order to give the user a general idea of the actual exploration.
+                </p>
+                <h1>Requirements</h1>
+                <p>
+                    This project is made to run on a Linux machine and uses the ARGOS software to run the simulation. For help on how to install Ubuntu, ARGOS and other dependencies, please refer
+                    to out github. The link is under the useful links. Right here
+                </p>
+                <h1>How does the project work? </h1>
+                <p>
+                    The first thing to do on the application tab is to make sure the server and the database are up and running.
+                    To do so, run the container with: docker-compose up --build
+                    <br><br>
+                    On the application tab, you are greeted with two tabs inside a drawer: Mission Options & Mission Mode. The drawer can be closed with the hamburger-button on the
+                    top left corner of the application tab (on the nav bar).
+                    <br><br>
+                    The "Mission Options" tab contains all the saved missions,
+                    the logs of the actual mission and a save button to save the current mission.
+                    <br><br>
+                    On the "Mission Mode" tab, you will find all the neccessary buttons to control your explorations.
+                    You first have to choose between the type of mission you want to launch:
+                    "Simulation" (ARGOS simulation) or "Real Drones" (the actual drone). Once you've selected the mission type,
+                    the mission state buttons will appear. If you selected the simulation mode, the ARGOS application should open
+                    and you can simply click play to begin the exploration.
+                </p>
+                <h3> Simulation Mode </h3>
+                <p>
+                    On the "Simulation" Mode, by simply click on start to begin the mission. A list of drones should appear and all their related information
+                    can be show or hidden by clicking the buttons "Show" and "Hide". You can also show a particular drone's information by clicking on a specific
+                    drone section. The button "Stop" stops the drones and the button "R2B", which stands for "Return to base", will make the drones go back to base.
+                </p>
+                <h3> Real Drones Mode </h3>
+                <p>
+                    The "Real Drones" mode requires you to scan for drones first. You can do that by clicking on the "Scan" button. Once you've found some drones,
+                    you can connect to them by clicking the connect button. You must connect to them individually by opening the according section. Once connected,
+                    you can "Start", "Stop", "R2B" (Return to base) and "Identify" the drones. Each button is self explanatory.
+                </p>
+                <h1> Useful tips </h1>
+                <p>
+                    On the "Videos" tab, shortcuts are provided to navigate through the multiple videos. By scrolling on the different labels,
+                    you can switch through the different video sections. You can also use the keys "h" and "l".
+                    <br> <br>
+                    On the "Application Tab", on the bottom right side of the map, you will find a "+" and "-" button. Use those to zoom
+                    in and out and visualize the map better!
+                </p>
+            </section>
+            <div class="team-container">
+                <h1 id="team-title"> Team 103 </h1>
+                <div class="team-cards">
+                    <person name="Noé Berguin" role="Project Coordinator"></person>
+                    <person name="Andrew Abdo" role="Analyst Developer"></person>
+                    <person name="Brando Tovar" role="Analyst Developer"></person>
+                    <person name="Estefan Vega-Calcada" role="Analyst Developer"></person>
+                    <person name="John Maliha" role="Analyst Developer"></person>
+                </div>
+            </div>
+
+            <div id="useful-links">
+                <a class="neon" target="_blank" href="https://ubuntu.com/tutorials/install-ubuntu-desktop#1-overview" > Install Ubuntu </a>
+                <a class="neon" target="_blank" href="https://docs.docker.com/engine/install/ubuntu/" > Install Docker </a>
+                <a class="neon" target="_blank" href="https://gitlab.com/polytechnique-montr-al/inf3995/20213/equipe-103/inf3995-103" > Gitlab </a>
+                <h3>Make sure to check out the <a class="text-links" routerLink="/videos">videos</a> tab for some demonstrations and tutorials</h3>
+            </div>
+            <img id="polylogo" src="../../../assets/images/Logo_Polytechnique_Montréal_(partenariat_Wikimédia).png"/>
+        </div>
+    </div>
+</body>

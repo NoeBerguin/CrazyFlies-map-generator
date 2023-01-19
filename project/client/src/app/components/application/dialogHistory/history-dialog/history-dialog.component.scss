@@ -1,0 +1,9 @@
+table {
+    width: 100%;
+}
+
+#test {
+    display: flex;
+    flex-wrap: nowrap;
+    min-width: fit-content;
+}

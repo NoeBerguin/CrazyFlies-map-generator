@@ -1,0 +1,149 @@
+<!-- <p>drone-info works!</p> -->
+<div class="drawer-compartment">
+  <mat-radio-button value="1" color="primary" (click)="loadCrazyflieMode()"
+    >Real Drones</mat-radio-button
+  >
+  <mat-radio-button value="2" color="primary" (click)="loadSimulationMode()">
+    Simulation</mat-radio-button
+  >
+</div>
+
+<div class="drawer-compartment" *ngIf="simulationMode || crazyflieMode">
+  <h3>Mission State:</h3>
+
+  <button
+    *ngIf="crazyflieMode"
+    mat-raised-button
+    class="drawer-button"
+    (click)="scanCrazyflie()"
+  >
+    Scan
+  </button>
+
+  <div *ngIf="simulationMode" class="mission-state-flex-container">
+    <button
+      mat-raised-button
+      class="drawer-button start-button"
+      (click)="sendCommand(actions.Start)"
+    >
+      Start
+    </button>
+    <button
+      mat-raised-button
+      class="drawer-button stop-button"
+      (click)="sendCommand(actions.Stop)"
+    >
+      Stop
+    </button>
+    <button
+      mat-raised-button
+      matTooltip="Return to base"
+      matTooltipShowDelay="500"
+      matTooltipPosition="above"
+      class="drawer-button"
+      (click)="sendCommand(actions.returnToBase)"
+    >
+      R2B
+    </button>
+  </div>
+
+  <div class="mission-state-flex-container">
+    <button
+      mat-button
+      class="drawer-button show-hide-drones"
+      (click)="accordion.openAll()"
+      matTooltip="Show list of drones"
+      matTooltipShowDelay="500"
+      matTooltipPosition="above"
+    >
+      Show
+    </button>
+    <button
+      mat-button
+      class="drawer-button show-hide-drones"
+      (click)="accordion.closeAll()"
+      matTooltip="Hide list of drones"
+      matTooltipShowDelay="500"
+      matTooltipPosition="above"
+    >
+      Hide
+    </button>
+  </div>
+  <mat-accordion multi>
+    <mat-expansion-panel *ngFor="let drone of listDrone">
+      <mat-expansion-panel-header>
+        <mat-panel-title> ID: </mat-panel-title>
+        <mat-panel-description>
+          {{ drone.id }}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <div *ngIf="crazyflieMode">
+        <div
+          *ngIf="drone.is_connected === false"
+          class="mission-state-flex-container"
+        >
+          <button
+            mat-raised-button
+            class="drawer-button start-button"
+            (click)="connectDrone(drone)"
+          >
+            Connect
+          </button>
+        </div>
+        <div *ngIf="drone.is_connected">
+          <div class="mission-state-flex-container">
+            <button
+              mat-raised-button
+              class="drawer-button start-button"
+              (click)="startDrone(drone)"
+            >
+              Start
+            </button>
+            <button
+              mat-raised-button
+              class="drawer-button stop-button"
+              (click)="stopDrone(drone)"
+            >
+              Stop
+            </button>
+          </div>
+          <div class="mission-state-flex-container">
+            <button
+              mat-raised-button
+              matTooltip="Return to base"
+              matTooltipShowDelay="500"
+              matTooltipPosition="above"
+              class="drawer-button"
+              (click)="returnToBase(drone)"
+            >
+              R2B
+            </button>
+            <button
+              mat-raised-button
+              class="drawer-button"
+              (click)="idCrazyflie(drone)"
+            >
+              Identify
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <mat-grid-list cols="4" rowHeight="50px">
+        <mat-grid-tile [colspan]="3" [rowspan]="1">
+          X: {{ drone.point.x }} Y: {{ drone.point.y }}
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1" [rowspan]="2">
+          <app-battery-level [percentage]="drone.battery"></app-battery-level>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="3" [rowspan]="1">
+          State: {{ drone.state }}
+        </mat-grid-tile>
+        <mat-grid-tile *ngIf="crazyflieMode" [colspan]="4" [rowspan]="1">
+          URI: {{ drone.uri }}
+        </mat-grid-tile>
+      </mat-grid-list>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
